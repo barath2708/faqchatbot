@@ -1,0 +1,9 @@
+{
+  "urls": [
+    "https://www.tensorflow.org/about"
+  ],
+  "question_selector": "",
+  "answer_selector": "",
+  "crawl": false,
+  "max_pages": 20
+}

@@ -1,0 +1,11 @@
+# secrets
+Backend/.env
+.env
+
+# python
+Backend/venv/
+__pycache__/
+*.pyc
+
+# node
+Frontend/node_modules/
