@@ -1,0 +1,10 @@
+faqchatbot_backup.zip
+*.zip
+*.zip
+.codespaces/shared/
+faqchatbot_backup.zip
+*.zip
+.codespaces/shared/
+.env
+.env-secrets
+*.user-secrets.json
