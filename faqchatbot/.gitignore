@@ -9,3 +9,9 @@ __pycache__/
 
 # node
 Frontend/node_modules/
+# build output
+Frontend/dist/
+
+# codespaces internals
+.codespaces/
+.oryx/

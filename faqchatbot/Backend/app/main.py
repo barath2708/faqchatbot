@@ -1,9 +1,12 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+import os
 import logging
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
 from app.config import settings
-from app.database import Base, engine, init_redis, close_redis, get_redis  # ← add get_redis here
+from app.database import Base, engine, init_redis, close_redis, get_redis
 from app.api import admin_api, question_api, source_api
 
 logger = logging.getLogger(__name__)
@@ -55,3 +58,11 @@ async def ping_redis():
     await r.set("foo", "bar")
     value = await r.get("foo")
     return {"foo": value}
+
+
+# Serve the built frontend — MUST be the last thing added, after all API routes,
+# otherwise it swallows requests meant for /question, /admin, /sources etc.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # .../Backend/app
+FRONTEND_DIST = os.path.join(BASE_DIR, "..", "..", "Frontend", "dist")
+
+app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="static")

@@ -6,5 +6,10 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: ['.app.github.dev'],
+    proxy: {
+      '/question': 'http://localhost:8000',
+      '/admin': 'http://localhost:8000',
+      '/sources': 'http://localhost:8000',
+    },
   },
 })
