@@ -33,7 +33,6 @@ class Settings(BaseSettings):
     # --- Neo4j (knowledge graph) ---
     NEO4J_URI:str ="neo4j+s://4b222253.databases.neo4j.io"
     NEO4J_USERNAME: str = ""
-    NEO4J_USER: str = ""       # ← alias, in case other code uses this name instead
     NEO4J_PASSWORD: str = ""
 
     # --- Auth ---

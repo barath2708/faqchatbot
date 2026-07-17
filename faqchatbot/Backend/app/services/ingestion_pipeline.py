@@ -25,10 +25,10 @@ def ingest_website(
         if not cleaned:
             continue
         if item.question:
-            chunk = chunk_qa_pair(question=item.question, answer=cleaned, source_url=item.source_url)
-            all_chunks.append(chunk)
+            all_chunks.extend(chunk_qa_pair(question=item.question, answer=cleaned, source_url=item.source_url))
         else:
             all_chunks.extend(chunk_long_text(cleaned, item.source_url))
+            
     if not all_chunks:
         return {
             "pages_scraped": len(scraped_items),

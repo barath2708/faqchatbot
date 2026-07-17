@@ -21,15 +21,13 @@ class Chunk:
 def _token_count(text: str) -> int:
     return len(_encoding.encode(text))
 
-
-def chunk_qa_pair(question: str, answer: str, source_url: str) -> Chunk:
+def chunk_qa_pair(question: str, answer: str, source_url: str) -> list[Chunk]:
     combined_text = f"Q: {question}\nA: {answer}"
 
     if _token_count(combined_text) > settings.CHUNK_SIZE_TOKENS * 1.5:
-        sub_chunks = chunk_long_text(combined_text, source_url)
-        return sub_chunks[0]
+        return chunk_long_text(combined_text, source_url)
 
-    return Chunk(chunk_id=str(uuid.uuid4()), text=combined_text, source_url=source_url, question=question)
+    return [Chunk(chunk_id=str(uuid.uuid4()), text=combined_text, source_url=source_url, question=question)]
 
 
 def chunk_long_text(text: str, source_url: str) -> list[Chunk]:

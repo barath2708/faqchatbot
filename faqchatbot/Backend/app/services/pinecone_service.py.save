@@ -1,5 +1,0 @@
-import logging
-from pinecone import Pinecone, ServerlessSpec
-
-from app.config import settings
-from app.services.chunking_service import Chunklogger = logging    _pc = Pinecone(api_key=settings.PINECONE_API_KEY)    logger.info("Pinecone client initial

@@ -65,4 +65,5 @@ async def ping_redis():
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # .../Backend/app
 FRONTEND_DIST = os.path.join(BASE_DIR, "..", "..", "Frontend", "dist")
 
+# ... your existing API routes above (e.g. app.include_router(...)) ...
 app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="static")
